@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/content/dam/fonts/manrope.light.otf");
+}
+@font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../../public/content/dam/fonts/manrope.medium.otf");
+}
+@font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../../public/content/dam/fonts/manrope.semibold.otf");
+}
+@font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../public/content/dam/fonts/manrope.bold.otf");
+}
+
+
+$Manrope : "Manrope", sans-serif;
+
+$font-weight: (
+    "light" : 300
+    "regular" : 400,
+    "medium" : 500,
+    "semibold" : 600,
+    "bold" : 700
+);
+
+@mixin fonts($size, $line-height, $color, $family: "sans-serif", $weight){
+    font-size:  $size;
+    line-height:  $line-height;
+    color: $color;
+    font-family: $family;
+    font-weight: $weight;
+}
