@@ -1,15 +1,27 @@
-image: node:latest
+stages :
+  -test
+  -build
+  -deploy
 
-stages:
-  - deploy
 
-deploy_prod:
-  stage: deploy
+test project:
+  stage: test
+  image : node:latest
   script:
-    - echo "REACT_APP_BASE_URL=https://culturenet-apis.netlify.app/.netlify/functions/api" >> ".env"
-    - npm install --legacy-peer-deps
-    - npm install netlify-cli -g
-    - npm run build
-    - netlify deploy --dir "build" --auth $AUTH_TOKEN --site $SITE_ID_PROD --prod
-  only:
-    - main
+    -yarn install
+    -yarn buils
+
+
+build project:
+  image : node:latest
+  script:
+    -yarn install
+    -yarn buils
+
+
+netlify:
+  stage : deploy
+  image : node:latest
+  script : 
+    - npm install -g netlift-cli
+    - netlify deploy --dir=build --prod
