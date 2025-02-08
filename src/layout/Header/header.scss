@@ -1,0 +1,49 @@
+@import '../../styles/reset';
+.header{
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #1C1C21;
+    .container{
+        border-left: 1px solid #1C1C21;
+        border-right: 1px solid #1C1C21;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+
+
+    }
+    &__logo{
+        .logo-text{
+            @include fonts(24px, 48px, #2B2B2B, $Manrope, 600)
+        }
+    }
+
+    &__nav{
+        margin-top: 32px;
+        border: 1px solid #1C1C21;
+        border-radius: 12px 12px 0px 0px;
+        border-bottom: none;
+        .menu-list{
+            display: flex;
+            align-items: center;
+            .menu{
+                padding: 30px 40px;
+                border-right: 1px solid #1C1C21;
+                &:last-child{
+                    border-right: none;
+                }
+            }
+        }
+    }
+
+    &__contact{
+        background-color:  #2A9D8F;
+        margin: 30px 0px;
+        border-radius: 10px;
+        border: 1px solid;
+        border-image-source: linear-gradient(135.66deg, #2F2F37 28.87%, rgba(47, 47, 55, 0) 76.42%);
+        padding: 16px 24px;
+        
+        
+    }
+}
