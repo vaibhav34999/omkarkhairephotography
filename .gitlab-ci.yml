@@ -20,12 +20,10 @@ build:
     paths:
       - build/
 
-
 deploy:
   stage: deploy
   script:
     - apt-get update -y && apt-get install -y lftp
-    - lftp -e "set ftp:ssl-allow yes; mirror -R build /public_html/; quit" -u "$FTP_USERNAME","$FTP_PASSWORD" ftp.omkarkhaire.in
+    - lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; mirror -R build /public_html/; quit" -u "$FTP_USERNAME","$FTP_PASSWORD" ftp.omkarkhaire.in
   only:
     - main
-
