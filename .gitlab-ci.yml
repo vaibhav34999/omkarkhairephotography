@@ -18,6 +18,6 @@ deploy:
   before_script:
     - apk update && apk add lftp
   script:
-    - lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "mirror -R build/ /path/to/your/public_html/ ; quit"
+    - lftp -u $FTP_USER,$FTP_PASS $FTP_HOST -e "mirror -R build/ /home/omkarkhaire@omkarkhaire.in/public_html/ ; quit"
   only:
     - main
