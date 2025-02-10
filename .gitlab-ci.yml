@@ -14,12 +14,20 @@ before_script:
 build:
   stage: build
   script:
+    - npm install
     - npm run build
+  artifacts:
+    paths:
+      - build/
+
 
 deploy:
   stage: deploy
   script:
     - apt-get update -y && apt-get install -y lftp
-    - lftp -e "set ftp:ssl-allow no; mirror -R -X node_modules -X .git -X .gitlab-ci.yml build/ /public_html/; quit" -u "omkarkhaire@omkarkhaire.in,#Q%0Nl%[xrB3" "ftp.omkarkhaire.in"
+    - lftp -e "set ftp:ssl-allow no; mirror -R build /public_html/; quit" -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" ftp.omkarkhaire.in
   only:
     - main
+
+
+ 
