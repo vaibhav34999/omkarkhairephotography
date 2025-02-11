@@ -22,8 +22,16 @@ build:
 
 deploy:
   stage: deploy
-  script:
+  before_script:
     - apt-get update -y && apt-get install -y lftp
-    - lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; mirror -R build /public_html/; quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
+  script:
+    - |
+      lftp -e "
+      set ssl:verify-certificate no;
+      set ftp:ssl-allow no;
+      open ftp://omkarkhaire@omkarkhaire.in:'#Q%0Nl%[xrB3'@ftp.omkarkhaire.in;
+      mirror -R build /public_html/;
+      bye;
+      "
   only:
     - main
