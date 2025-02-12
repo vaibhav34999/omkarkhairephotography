@@ -16,9 +16,10 @@ build:
   script:
     - npm install -g serve
     - npm run build
+    - tar -czvf build.tar.gz build/
   artifacts:
     paths:
-      - build/
+      - build.tar.gz
   only:
     - main
 
@@ -26,7 +27,19 @@ deploy:
   stage: deploy
   script:
     - apt-get update -y && apt-get install -y lftp
-    - lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; mirror -R --only-newer --verbose build/ /public_html/; quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
+    - lftp -e "
+        set ssl:verify-certificate no;
+        set ftp:ssl-allow no;
+        put -O /public_html/ build.tar.gz;
+        quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
+    - lftp -e "
+        set ssl:verify-certificate no;
+        set ftp:ssl-allow no;
+        cd /public_html;
+        ! tar -xzvf build.tar.gz --strip-components=1;
+        rm build.tar.gz;
+        quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
   only:
     - main
-  timeout: 120m
+  timeout: 60m
+
