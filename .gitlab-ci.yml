@@ -1,4 +1,4 @@
-image: node:18
+image: node:20
 
 stages:
   - build
@@ -14,16 +14,19 @@ before_script:
 build:
   stage: build
   script:
-    - npm install
+    - npm install -g serve
     - npm run build
   artifacts:
     paths:
       - build/
+  only:
+    - main
 
 deploy:
   stage: deploy
   script:
     - apt-get update -y && apt-get install -y lftp
-    - lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; mirror -R build/ /public_html/; quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
+    - lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; mirror -R --only-newer --verbose build/ /public_html/; quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
   only:
     - main
+  timeout: 120m
