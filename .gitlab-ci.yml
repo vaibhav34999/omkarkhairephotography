@@ -22,18 +22,8 @@ build:
 
 deploy:
   stage: deploy
-  timeout: 120m  
-  before_script:
-    - apt-get update -y && apt-get install -y lftp
   script:
-    - |
-      lftp -e "
-      set ssl:verify-certificate no;
-      set ftp:ssl-allow no;
-      open ftp://omkarkhaire@omkarkhaire.in:'#Q%0Nl%[xrB3'@ftp.omkarkhaire.in;
-      ls;
-      mirror --verbose -R build /public_html/;
-      bye;
-      "
+    - apt-get update -y && apt-get install -y lftp
+    - lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; mirror -R build/ /public_html/; quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
   only:
     - main
