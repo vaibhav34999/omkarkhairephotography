@@ -1,4 +1,4 @@
-image: node:20
+image: node:18
 
 stages:
   - build
@@ -14,14 +14,11 @@ before_script:
 build:
   stage: build
   script:
-    - npm install -g serve
+    - npm install
     - npm run build
-    - tar -czvf build.tar.gz build/
   artifacts:
     paths:
-      - build.tar.gz
-  only:
-    - main
+      - build/
 
 deploy:
   stage: deploy
@@ -30,16 +27,8 @@ deploy:
     - lftp -e "
         set ssl:verify-certificate no;
         set ftp:ssl-allow no;
-        put -O /public_html/ build.tar.gz;
-        quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
-    - lftp -e "
-        set ssl:verify-certificate no;
-        set ftp:ssl-allow no;
         cd /public_html;
-        ! tar -xzvf build.tar.gz --strip-components=1;
-        rm build.tar.gz;
+        mput -c -O . build/*;
         quit" -u "omkarkhaire@omkarkhaire.in","#Q%0Nl%[xrB3" ftp.omkarkhaire.in
   only:
     - main
-  timeout: 60m
-
