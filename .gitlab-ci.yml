@@ -22,7 +22,7 @@ build:
 
 deploy:
   stage: deploy
-  timeout: 120m  # 120 मिनिटे Timeout वाढवले
+  timeout: 120m  
   before_script:
     - apt-get update -y && apt-get install -y lftp
   script:
