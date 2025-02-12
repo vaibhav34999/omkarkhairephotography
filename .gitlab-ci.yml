@@ -22,6 +22,7 @@ build:
 
 deploy:
   stage: deploy
+  timeout: 120m  # 120 मिनिटे Timeout वाढवले
   before_script:
     - apt-get update -y && apt-get install -y lftp
   script:
@@ -30,7 +31,8 @@ deploy:
       set ssl:verify-certificate no;
       set ftp:ssl-allow no;
       open ftp://omkarkhaire@omkarkhaire.in:'#Q%0Nl%[xrB3'@ftp.omkarkhaire.in;
-      mirror -R build /public_html/;
+      ls;
+      mirror --verbose -R build /public_html/;
       bye;
       "
   only:
