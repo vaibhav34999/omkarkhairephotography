@@ -1,0 +1,77 @@
+@import '../../styles/reset';
+
+.review-container{
+    margin-top: 200px;
+    margin-bottom: 200px;
+    @include mobile{
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    .container{
+        .title-box{
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 80px;
+            padding-bottom: 50px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            @include mobile{
+                padding-bottom: 20px;
+                margin-bottom: 40px;
+            }
+
+            .client-box{
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                .test-text{
+                    @include fonts(20px, 27.32px, $gray, $Manrope, 600);
+                    text-transform: uppercase;
+
+                    @include mobile {
+                        @include fonts(14px, 19.12px, $gray, $Manrope, 600);
+                    }
+                }
+                .client-text{
+                    @include fonts(58px, 79.23px, $text-color, $Manrope, 600);
+                    text-transform: uppercase;
+
+                    @include mobile {
+                        @include fonts(28px, 38.25px, $text-color, $Manrope, 600);
+                    }
+                }
+            }
+
+            .total-review-box{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .total-box{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    @include mobile{
+                        gap: 2px;
+                    }
+
+                    .total-text{
+                        @include fonts(18px, 27px, $gray, $Manrope, 400);
+    
+                        @include mobile {
+                            @include fonts(14px, 21px, $gray, $Manrope, 400);
+                        }
+                    }
+                    .total-length-text{
+                        @include fonts(28px, 42px, $text-color, $Manrope, 500);
+    
+                        @include mobile {
+                            @include fonts(20px, 30px, $text-color, $Manrope, 500);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

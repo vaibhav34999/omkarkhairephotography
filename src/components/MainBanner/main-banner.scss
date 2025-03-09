@@ -1,0 +1,202 @@
+@import '../../styles/reset';
+
+.main-banner {
+    .container {
+        .introduce-box {
+            display: flex;
+            justify-content: space-between;
+            padding: 60px 0px;
+
+            @include mobile {
+                flex-direction: column;
+                padding: 40px 16px;
+                gap: 20px;
+            }
+
+            .name-box {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                @include mobile {
+                    gap: 4px;
+                }
+
+                .photography-text {
+                    @include fonts(22px, 33.05px, $gray, $Manrope, 500);
+                    text-transform: uppercase;
+
+                    @include mobile {
+                        @include fonts(14px, 19.02px, $gray, $Manrope, 500);
+                    }
+                }
+
+                .name-text {
+                    @include fonts(80px, 109.28px, $text-color, $Manrope, 600);
+                    text-transform: uppercase;
+
+                    @include mobile {
+                        @include fonts(40px, 54.64px, $text-color, $Manrope, 600);
+                    }
+                }
+            }
+
+            .work-box {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .btn-box {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .lets-text {
+                        @include fonts(58px, 79.23px, $text-color, $Manrope, 600);
+                        text-transform: uppercase;
+
+                        @include mobile {
+                            @include fonts(28px, 38.25px, $text-color, $Manrope, 600);
+                        }
+                    }
+
+                    .work-btn {
+                        border: none;
+                        width: 104px;
+                        height: 56px;
+                        padding: 16px 40px;
+                        gap: 10px;
+                        border-radius: 100px;
+                        opacity: 0px;
+                        background-color: #4A2CED;
+                        box-shadow: 4px 4px 17.4px 0px #FFFFFF47 inset;
+
+                        @include mobile {
+                            padding: 14px 30px;
+                        }
+
+                        @include mobile {
+                            width: 80px;
+                            height: 48px
+                        }
+
+                    }
+                }
+
+                .together-text {
+                    @include fonts(58px, 79.23px, $text-color, $Manrope, 600);
+                    text-transform: uppercase;
+
+                    @include mobile {
+                        @include fonts(28px, 38.25px, $text-color, $Manrope, 600);
+                    }
+                }
+            }
+        }
+
+        .serive-banner-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            @include mobile{
+                grid-template-columns: 1fr;
+            }
+
+            .users-color-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 20px;
+                width: fit-content;
+
+                .item {
+                    max-width: 200px;
+                    aspect-ratio: 1/1;
+                    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5),
+                        inset 0px 2px 2px rgba(255, 255, 255, 0.2);
+                    animation: fadeIn 0.5s linear 1 forwards;
+                    animation-delay: calc(0.2s * var(--i));
+                    opacity: 0;
+
+                    &:nth-child(1) {
+                        background-color: #67d7e1;
+                        border-radius: 50% 50% 0 50%;
+                    }
+
+                    &:nth-child(2) {
+                        border-radius: 50% 50% 0 0;
+                        object-fit: cover;
+                    }
+
+                    &:nth-child(3) {
+                        background-color: #6cc164;
+                        border-radius: 50%;
+                    }
+
+                    &:nth-child(4) {
+                        border-radius: 0 0 0 50%;
+                    }
+
+                    &:nth-child(5) {
+                        border-radius: 0 50% 50% 0;
+                    }
+
+                    &:nth-child(6) {
+                        background-color: #8071a8;
+                        border-radius: 0 50% 50% 50%;
+                    }
+
+                    &:nth-child(7) {
+                        border-radius: 50% 50% 0 50%;
+                    }
+
+                    &:nth-child(8) {
+                        background-color: #fe7519;
+                        border-radius: 50% 0 0 50%;
+                    }
+
+                    &:nth-child(9) {
+                        background-color: #f5bec3;
+                        border-radius: 0 50% 50% 0;
+                    }
+
+                    &:nth-child(10) {
+                        border-radius: 50%;
+                    }
+
+                    &:nth-child(11) {
+                        background-color: #fcd659;
+                        border-radius: 50% 0 50% 50%;
+                    }
+
+                    &:nth-child(12) {
+                        border-radius: 50% 0 0 0;
+                    }
+                }
+                @keyframes fadeIn {
+                    0% {
+                        opacity: 0;
+                        transform: scale(0);
+                    }
+                
+                    100% {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+

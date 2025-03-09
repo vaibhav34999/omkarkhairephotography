@@ -1,0 +1,107 @@
+@import '../../styles/reset';
+
+.faq-container{
+    margin-top: 200px;
+    @include mobile{
+        margin-top: 80px;
+    }
+    .container{
+        @include mobile{
+            padding: 0 16px;
+        }
+        .title-box{
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid $border-color;
+            @include mobile{
+                padding-bottom: 20px;
+            }
+            .short-text{
+                @include fonts(20px, 27.32px, $gray, $Manrope, 600);
+                text-transform: uppercase;
+                @include mobile {
+                    @include fonts(14px, 19.12px, $gray, $Manrope, 600);
+                }
+            }
+            .full-text{
+                @include fonts(58px, 79.23px, $text-color, $Manrope, 600);
+                text-transform: uppercase;
+
+                @include mobile {
+                    @include fonts(28px, 38.25px, $text-color, $Manrope, 600);
+                }
+            }
+        }
+        .contain-box{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            
+            @include mobile{
+                grid-template-columns: 1fr;
+            }
+
+            .left-box{
+                border-right: 1px solid $border-color;
+                @include mobile{
+                    border-right: none;
+                    border-bottom: 1px solid $border-color;
+                }
+            }
+            .right-box{
+
+            }
+            .faq-item{
+                padding: 30px 50px;
+                border-bottom: 1px solid $border-color;
+                @include mobile{
+                    padding: 20px 24px;
+                }
+                &:last-child{
+                    border-bottom: none;
+                }
+                .faq-question{
+                    border: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    gap: 40px;
+                    .question-text{
+                        @include fonts(20px, 27.32px, $text-color, $Manrope, 600);
+                        text-align: left;
+                        text-transform: uppercase;
+                        @include mobile {
+                            @include fonts(14px, 19.12px, $text-color, $Manrope, 600);
+                            width: 80%;
+                        }
+                    }
+                    .arrow{
+                        width: 52px;
+                        height: 52px;
+                        border: 1px solid $border-color;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include mobile{
+                            width: 38px;
+                            height: 38px
+                        }
+                    }
+                }
+                .faq-answer{
+                    @include fonts(18px, 27px, $gray, $Manrope, 400);
+                    width: 85%;
+                    @include mobile {
+                        @include fonts(14px, 21px, $gray, $Manrope, 400);
+                        width: 80%;
+                    }
+                }
+            }
+
+        }
+
+    }
+}

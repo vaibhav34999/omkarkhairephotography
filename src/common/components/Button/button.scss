@@ -1,0 +1,16 @@
+@import '../../../styles/reset';
+
+.button{
+    background-color: $border-color;
+    padding: 16px 24px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: $white;
+    @include mobile{
+        padding: 14px 20px;
+    }
+}

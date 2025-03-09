@@ -1,49 +1,324 @@
 @import '../../styles/reset';
 .header{
-    background-color: #F8F9FA;
-    border-bottom: 1px solid #1C1C21;
-    .container{
-        border-left: 1px solid #1C1C21;
-        border-right: 1px solid #1C1C21;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 40px;
+    background-color: $background-color;
+    border-bottom: 1px solid $border-color;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    right: 0;
+    z-index: 10;
+    @include mobile{
+        padding: 0 16px;
+        &.open{
+            background-color: $border-color;
+            border-bottom: $white;
 
+            .container{
+                border-left: 1px solid $white;
+                border-right: 1px solid $white;
+                .logo{
+                    .logo-text{
+                       color: $white;
+                       .logo-anchor{
+                            color: $white;
+                        }
+                    }
 
-    }
-    &__logo{
-        .logo-text{
-            @include fonts(24px, 48px, #2B2B2B, $Manrope, 600)
-        }
-    }
-
-    &__nav{
-        margin-top: 32px;
-        border: 1px solid #1C1C21;
-        border-radius: 12px 12px 0px 0px;
-        border-bottom: none;
-        .menu-list{
-            display: flex;
-            align-items: center;
-            .menu{
-                padding: 30px 40px;
-                border-right: 1px solid #1C1C21;
-                &:last-child{
-                    border-right: none;
                 }
             }
         }
     }
-
-    &__contact{
-        background-color:  #2A9D8F;
-        margin: 30px 0px;
-        border-radius: 10px;
-        border: 1px solid;
-        border-image-source: linear-gradient(135.66deg, #2F2F37 28.87%, rgba(47, 47, 55, 0) 76.42%);
-        padding: 16px 24px;
-        
-        
+    .container{
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        padding: 0 40px;
+        @include mobile{
+            padding: 40px 0px 0px 0px;
+        }
     }
 }
+
+.mob-menu{
+    display: none;
+    @include mobile{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 109px;
+        left: 16px;
+        right: 16px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: all 0.4s ease-in-out;
+        background-color: $border-color;
+        border-radius: 0 0 20px 20px;
+        border: 1px solid $border-color;
+        border-top: none;
+        z-index: 10;
+    }
+    &.open{
+
+
+        opacity: 1;
+        transform: translateY(0);
+        top: 110px;
+        .navbar{
+            display: block;
+            margin-top: 0px;
+            border: none;
+        }
+        .contact-btn{
+            display: block;
+
+
+            .btn-text{
+                margin: 24px;
+                background-color: $border-color;
+                box-shadow: inset 0 0 $border-color;
+                transition: all 0.3s ease-out;
+                @include fonts(14px, 18.2px, $white, $Manrope, 400);
+                border: 1px solid $white;
+
+                &.active{
+
+                    background-color: $background-color;
+                    color: $menu-color;
+
+                }
+            }
+        }
+
+    }
+}
+.logo{
+    .logo-text{
+        @include fonts(24px, 48px, $black, $Manrope, 600);
+        .logo-anchor{
+            @include fonts(24px, 48px, $black, $Manrope, 600);
+        }
+    }
+    @include mobile{
+        margin-left: 16px;
+    }
+}
+.navbar{
+    margin-top: 32px;
+    border: 1px solid $border-color;
+    border-radius: 12px 12px 0px 0px;
+    border-bottom: none;
+    @include mobile{
+        display: none;
+    }
+    .menu-list{
+        display: flex;
+        align-items: center;
+        @include mobile{
+            flex-direction: column;
+        }
+        .li{
+            @include mobile{
+                width: 100%;
+            }
+            .menu{
+                padding: 30px 40px;
+                border: 1px solid $border-color;
+                display: inline-block;
+                transition-duration:0.6s;
+                transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                position: relative;
+                @include fonts(14px, 18.2px, $menu-color, $Manrope, 400);
+                @include mobile{
+                    width: 100%;
+                    border-radius: 0;
+                    border: none;
+                    border-bottom: 1px solid $white;
+                    padding: 24px 16px;
+                    color: $white;
+                }
+
+                &.active{
+                    color: $white;
+                    background-color: $border-color;
+                    transition: all 0.7s;
+                    border-bottom: 1px solid $border-color;
+                    @include mobile{
+                        background-color: $background-color;
+                        color: $menu-color;
+                    
+                    }
+                    
+                }
+
+            }
+
+            &:first-child{
+                .menu{
+                    border-radius: 9px 0px 0px 0px;
+                    @include mobile{
+                        border-radius: 0;
+                    }
+
+                }
+            }
+
+            &:last-child{
+                .menu{
+                    border-radius: 0px 9px 0px 0px;
+                    // border-right: none;
+                    @include mobile{
+                        border-radius: 0;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.contact-btn{
+
+    @include mobile{
+        display: none;
+
+    }
+
+    .btn-text{
+        border: 1px solid $border-color;
+        margin: 30px 0px;
+        border-radius: 10px;
+        padding: 16px 24px;
+        transition: all 0.3s ease-out;
+        width: fit-content;
+        cursor: pointer;
+
+        background-color: $background-color;
+        box-shadow: inset 0 0 $background-color;
+        transition: all 0.3s ease-out;
+        @include fonts(14px, 18.2px, $border-color, $Manrope, 400);
+        display: block;
+        transition-duration:0.6s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        @include mobile{
+            background-color: $border-color;
+            box-shadow: inset 0 0 $border-color;
+            border: 1px solid $white;
+            
+        }
+        &:hover {
+            box-shadow: inset 12em 0 $border-color;
+            color: $white;
+            @include mobile{
+                box-shadow: inset 12em 0 $white;
+                color: $border-color;
+            }
+
+        }
+        &.active{
+            color: $white;
+            background-color: $border-color;
+            transition: all 0.7s;
+            border-bottom: 1px solid $border-color;
+            pointer-events: none;
+            @include mobile{
+                background-color: $background-color;
+                color: $menu-color;
+
+            
+            }
+
+
+            
+        }
+    }
+}
+
+
+
+.hamburger{
+    display: none;
+    @include mobile{
+        display: block;
+        padding: 20px;
+        border-top: 1px solid $border-color;
+        border-left: 1px solid $border-color;
+        border-radius: 20px 0px 0px 0px;
+
+
+    }
+    &.open{
+        border-top: 1px solid $white;
+        border-left: 1px solid $white;
+        background-color: $border-color;
+
+        .hamburger-icon{
+            span {
+
+                background: $white;
+                &:nth-child(1) {
+                  transform: rotate(45deg);
+                  top: 2px;
+                  left: 4px;
+                }
+          
+                &:nth-child(2) {
+                  width: 0%;
+                  opacity: 0;
+                }
+          
+                &:nth-child(3) {
+                  transform: rotate(-45deg);
+                  top: 22px;
+                  left: 4px;
+                }
+              }
+        }
+    }
+
+    .hamburger-icon {
+        width: 28px;
+        height: 28px;
+        position: relative;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+      
+        span {
+          display: block;
+          position: absolute;
+          height: 3px;    
+          width: 100%;
+          background: $border-color;
+          border-radius: 9px;
+          opacity: 1;
+          left: 0;
+          transform: rotate(0deg);
+          transition: .25s ease-in-out;
+      
+          &:nth-child(1) {
+            top: 0px;
+            transform-origin: left center;
+          }
+      
+          &:nth-child(2) {
+            top: 12px;
+            transform-origin: left center;
+          }
+      
+          &:nth-child(3) {
+            top: 24px;
+            transform-origin: left center;
+          }
+        }
+      
+
+      }
+    
+
+}
+

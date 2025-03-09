@@ -1,0 +1,293 @@
+@import '../../styles/reset';
+
+.intoduction-container {
+    margin-top: 200px;
+    @include mobile{
+        margin-top: 80px;
+    }
+    .container {
+        @include mobile {
+            padding: 0 16px;
+        }
+
+        >.title-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 50px;
+            margin-bottom: 80px;
+            border-bottom: 1px solid $border-color;
+
+            @include mobile {
+                flex-direction: column;
+                margin-bottom: 40px;
+                gap: 20px;
+                align-items: flex-start;
+                padding-bottom: 20px;
+            }
+
+            .title {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .about-text {
+                    @include fonts(20px, 27.32px, $gray, $Manrope, 600);
+                    text-transform: uppercase;
+
+                    @include mobile {
+                        @include fonts(20px, 27.32px, $gray, $Manrope, 600);
+                    }
+                }
+
+                .omkar-text {
+                    text-transform: uppercase;
+                    @include fonts(58px, 79.23px, $text-color, $Manrope, 600);
+
+                    @include mobile {
+                        @include fonts(28px, 38.25px, $text-color, $Manrope, 600);
+                    }
+                }
+            }
+
+            .know-more-btn {
+                background-color: $border-color;
+                padding: 16px 24px;
+                border-radius: 10px;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                color: $white;
+
+                @include mobile {
+                    padding: 14px 20px;
+                }
+            }
+        }
+
+        .details-box {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 30px;
+            align-items: center;
+
+            @include mobile {
+                grid-template-columns: 1fr;
+
+            }
+
+            .left-box {
+                height: 710px;
+
+                @include mobile {
+                    height: 375px;
+                }
+
+                // background: var(--background);
+                border: 1px solid $border-color;
+                position: relative;
+                padding: 1rem;
+
+                .corner {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    border: 1px solid $border-color;
+                    position: absolute;
+
+                    &::after,
+                    &::before {
+                        content: "";
+                        position: absolute;
+                    }
+
+                    &::after {
+                        width: 2rem;
+                        height: calc(1rem - 1px);
+                    }
+
+                    &::before {
+                        width: calc(1rem - 1px);
+                        height: 2rem;
+                    }
+
+                    &.left {
+                        left: -0.5rem;
+
+                        &::after {
+                            left: calc(-2px + 1rem);
+                            border-left: 1px solid $border-color;
+                        }
+
+                        &::before {
+                            left: -1px;
+                            border-left: 1px solid $border-color;
+                        }
+                    }
+
+                    &.right {
+                        right: -0.5rem;
+
+                        &::after {
+                            right: calc(-2px + 1rem);
+                            border-right: 1px solid $border-color;
+                        }
+
+                        &::before {
+                            right: -1px;
+                            border-right: 1px solid $border-color;
+                        }
+                    }
+
+                    &.top {
+                        top: -0.5rem;
+
+                        &::after {
+                            top: -1px;
+                            border-top: 1px solid $border-color;
+                        }
+
+                        &::before {
+                            top: calc(-2px + 1rem);
+                            border-top: 1px solid $border-color;
+                        }
+                    }
+
+                    &.bottom {
+                        bottom: -0.5rem;
+
+                        &::after {
+                            bottom: -1px;
+                            border-bottom: 1px solid $border-color;
+                        }
+
+                        &::before {
+                            bottom: calc(-2px + 1rem);
+                            border-bottom: 1px solid $border-color;
+                        }
+                    }
+                }
+
+                .img {
+                    box-shadow: $box-shadow;
+                    border-radius: 20px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .right-box {
+                border: 1px solid $border-color;
+                border-radius: 20px;
+                box-shadow: $box-shadow;
+
+                .intro-box {
+                    padding: 30px;
+                    border-bottom: 1px solid $border-color;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .title-box {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+
+                        .img {
+                            width: 30px;
+                            height: 30px
+                        }
+
+                        .title {
+                            @include fonts(30px, 40.98px, $text-color, $Manrope, 600);
+
+                            @include mobile {
+                                @include fonts(20px, 27.32px, $text-color, $Manrope, 600);
+                            }
+                        }
+                    }
+
+                    .para {
+                        @include fonts(18px, 27px, $gray, $Manrope, 400);
+
+                        @include mobile {
+                            @include fonts(14px, 19.12px, $gray, $Manrope, 400);
+                        }
+                    }
+                }
+
+                .contact-info {
+                    padding: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+
+                    @include mobile {
+                        gap: 20px;
+                    }
+
+                    .title-box {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+
+                        .img {
+                            width: 30px;
+                            height: 30px
+                        }
+
+                        .title {
+                            @include fonts(30px, 40.98px, $text-color, $Manrope, 600);
+
+                            @include mobile {
+                                @include fonts(20px, 27.32px, $text-color, $Manrope, 600);
+                            }
+                        }
+                    }
+
+                    .contact-details-box {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 40px;
+
+                        @include mobile {
+                            gap: 20px;
+                        }
+
+                        .contact-info-box {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 20px;
+
+                            @include mobile {
+                                grid-template-columns: 1fr;
+                            }
+
+                            .each-box {
+                                .label {
+                                    @include fonts(18px, 27px, $text-color, $Manrope, 600);
+
+                                    @include mobile {
+                                        @include fonts(14px, 19.12px, $text-color, $Manrope, 600);
+                                    }
+                                }
+
+                                .value {
+                                    @include fonts(18px, 27px, $gray, $Manrope, 400);
+
+                                    @include mobile {
+                                        @include fonts(14px, 19.12px, $gray, $Manrope, 400);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+}
